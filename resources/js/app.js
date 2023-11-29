@@ -27,59 +27,80 @@ import { createPinia } from 'pinia';
 
 import VueApexCharts from "vue3-apexcharts";
 
+const customLightTheme = {
+  colors: {
+    background_nav: "#ffffff",
+    text_grey: "#7f7c87",
+    background_color:"#EDECF4",
+    primary: '#001f4a',
+    primary_dark: '#051942',
+    fail: '#F50057',
+    secondary: '#00337C',
+    secondary_dark: '#001f4a',
+    background: '#E2E2E2',
+    white: '#FFFFFF',
+    grey: "#A2A2A2",
+    black: '#000000',
+    success: '#27AE60',
+    accent: "#00CFB5",
+    error: "#C22F2F",
+    success_card: '#27AE60',
+    purple_light: "#F9F0FF",
+    purple_primary:"#9c5df9",
+    purple_light2: "#e2dff8",
+    purple_dark_accent: "#7366ef", 
+    purple_acent: "#fcebf7",
+    blue_light: "#fcebf7",
+    sky_blue: "#fcebf7",
+    purple_dark:"#8436f7",
+    grey_dark: "#5b5867",
+    error_light: "#ea5455",
+    blue_light_sky: "#d0f0f7",
+    aqua_normal: "#00cfe8",
+    orange_light2:"#f9e8dd",
+    orange_l2:"#ff9e43",
+    wather_melon: "#fcc3c3",
+    red_dark_2: "#ff3838",
+    background_drawer: "#FFF",
+
+  },
+};
+const customDarkTheme = {
+  dark: false,
+  colors: {
+    white: "#fff",
+    background_nav: "#2e3248",
+    background_color: "#25293c",
+    background_drawer: "#2e3248",
+    purple_primary:"#9c5df9",
+    grey_dark: "#acb0cc",
+
+
+    
+    purple_light2: "#313258",
+    purple_dark_accent: "#7367f0",
+    
+    blue_light_sky: "#1f4357",
+    aqua_normal:"#00cfe8",
+
+    orange_light2:"#483b3d",
+    orange_l2: "#ff9e43",
+
+    wather_melon: "#82424f",
+    red_dark_2: "#ff3838",
+
+    
+  },
+};
 const vuetify = createVuetify({
     components,
     directives,
     theme: {
-        themes: {
-          light: {
-            colors: {
-              text_grey: "#7f7c87",
-              background_color:"#EDECF4",
-              primary: '#001f4a',
-              primary_dark: '#051942',
-              fail: '#F50057',
-              secondary: '#00337C',
-              secondary_dark: '#001f4a',
-              background: '#E2E2E2',
-              white: '#FFFFFF',
-              grey: "#A2A2A2",
-              black: '#000000',
-              success: '#27AE60',
-              accent: "#00CFB5",
-              error: "#C22F2F",
-              success_card: '#27AE60',
-              purple_light: "#F9F0FF",
-              purple_primary:"#9c5df9",
-              purple_light2: "#e2dff8",
-              purple_dark_accent: "#7366ef", 
-              purple_acent: "#fcebf7",
-              blue_light: "#fcebf7",
-              sky_blue: "#fcebf7",
-              purple_dark:"#8436f7",
-              grey_dark: "#5b5867",
-              error_light: "#ea5455",
-              blue_light_sky: "#d0f0f7",
-              aqua_normal: "#00cfe8",
-              orange_light2:"#f9e8dd",
-              orange_l2:"#ff9e43",
-              wather_melon: "#fcc3c3",
-              red_dark_2: "#ff3838"
-            },
-          },
-          dark:{
-            background: '#FFFFFF',
-            surface: '#FFFFFF',
-            primary: '#6200EE',
-            'primary-darken-1': '#3700B3',
-            secondary: '#03DAC6',
-            'secondary-darken-1': '#018786',
-            error: '#B00020',
-            info: '#2196F3',
-            success: '#4CAF50',
-            warning: '#FB8C00',
-          }
-        },
+      defaultTheme: "customLightTheme",
+      themes: {
+        customLightTheme,
+        customDarkTheme,
+      },
     },
 })
 

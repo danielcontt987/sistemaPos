@@ -1,11 +1,17 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, provide } from "vue";
 import { RouterView } from "vue-router";
 import logout from "../../src/apis/user.js";
 import NavegationDrawerVue from "./NavegationDrawerVue.vue";
+import { useTheme } from "vuetify";
+const theme = useTheme();
 //data
 const drawer = ref(true);
-
+const selectedDark = ref("customDarkTheme");
+const selectedLight = ref("customLightTheme");
+const DarkMode = ref("Dark");
+const LightMode = ref("Light");
+const is_dark = ref(false);
 
 //Methods
 const logOut = async () => {
@@ -25,21 +31,30 @@ const toggleDrawer = () => {
   updateDrawer(!drawer.value);
 };
 
-onMounted(() => {
 
-})
+const setTheme = () => {
+  theme.global.name.value = selectedDark.value;
+  is_dark.value = !is_dark.value;
+};
 
+const setThemeLight = () => {
+  theme.global.name.value = selectedLight.value;
+  is_dark.value = !is_dark.value;
+};
+
+provide('is_dark', is_dark);
+
+onMounted(() => {});
 </script>
 
 <template>
-  
   <NavegationDrawerVue
-  :drawer="drawer"
-  @update:drawer="updateDrawer"
+    :drawer="drawer"
+    @update:drawer="updateDrawer"
   ></NavegationDrawerVue>
   <v-main class="bg-background_color">
     <v-container fluid>
-      <v-card class="rounded-md" flat>
+      <v-card class="rounded-md" flat color="background_nav">
         <v-card-text>
           <v-row align="center">
             <!-- Iconos a la izquierda -->
@@ -55,7 +70,21 @@ onMounted(() => {
 
             <!-- Iconos a la derecha -->
             <v-col cols="auto">
-              <v-icon>mdi-weather-sunny</v-icon>
+              <v-menu transition="scale-transition">
+                <template v-slot:activator="{ props }">
+                  <v-icon color="grey_dark" v-bind="props">
+                    {{ is_dark === false ?  "mdi-weather-sunny" : "mdi-moon-waning-crescent" }}
+                  </v-icon>
+                </template>
+                <v-list :class="is_dark === false ? 'bg-white' : 'bg-background_nav'">
+                  <v-list-item v-model="selectedDark" @click="setTheme" v-if="is_dark === false">
+                    <v-list-item-title class="text-grey_dark"> <v-icon color="grey_dark">mdi-moon-waning-crescent</v-icon> {{ DarkMode }}</v-list-item-title>
+                  </v-list-item>
+                  <v-list-item v-model="selectedLight" @click="setThemeLight" v-else>
+                    <v-list-item-title class="text-grey_dark"> <v-icon color="grey_dark">mdi-weather-sunny</v-icon> {{ LightMode }}</v-list-item-title>
+                  </v-list-item>
+                </v-list>
+              </v-menu>
             </v-col>
             <v-col cols="auto">
               <v-badge color="purple_primary" class="py-2">
@@ -67,7 +96,9 @@ onMounted(() => {
                 <v-menu activator="parent">
                   <v-sheet :elevation="4" :height="300" :width="200" rounded>
                     <v-col cols="12">
-                      <v-btn class="bg-error_light" @click="logOut()">Log Out</v-btn>
+                      <v-btn class="bg-error_light" @click="logOut()"
+                        >Log Out</v-btn
+                      >
                     </v-col>
                   </v-sheet>
                 </v-menu>

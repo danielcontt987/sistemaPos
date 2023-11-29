@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, watch, defineProps, defineEmits } from "vue";
+import { ref, onMounted, watch, defineProps, defineEmits, inject } from "vue";
 
 const props = defineProps(["drawer"]);
 const emit = defineEmits();
@@ -7,6 +7,7 @@ const emit = defineEmits();
 const drawer = ref(true);
 const rail = ref(false);
 const activeItem = ref(null);
+const is_dark = inject('is_dark');
 
 const toggleRail = () => {
   drawer.value = rail;
@@ -57,12 +58,22 @@ onMounted(() => {
     :rail="rail"
     permanent
     @click="toggleRail"
+    color="background_drawer"
   >
     <v-list density="compact" nav>
       <v-list-item class="justify-center" align="center" v-if="rail === false">
         <img
+          v-if="is_dark === false"
           src="../../../../public/img/img3.png"
           width="150"
+          height="50"
+          alt="Logo"
+          class="mb-3"
+        />
+        <img
+          v-if="is_dark === true"
+          src="../../../../public/img/img1.png"
+          width="50"
           height="50"
           alt="Logo"
           class="mb-3"
@@ -76,41 +87,38 @@ onMounted(() => {
           $router.push(item.route);
         "
         :class="{ 'bg-red': isCurrentRoute(item.route) }"
-        class="overflow-y"
+        class="overflow-y text-white"
       >
         <v-icon
           v-if="rail"
           :title="item.text"
-          :color="isCurrentRoute(item.route) ? 'white' : 'text-white'"
-          :class="[
-            rail ? '' : 'mx-2',
-            { 'mr-5': !rail && !isCurrentRoute(item.route) },
-          ]"
           v-html="$Feather.icons[item.icon].toSvg()"
+          color="grey_dark"
         >
         </v-icon>
         <v-icon
           v-if="rail == false"
           :title="item.text"
-          :class="isCurrentRoute(item.route) ? 'white' : 'text-text_grey'"
+          :class="isCurrentRoute(item.route) ? 'grey_dark' : 'text-grey_dark'"
           class="mx-5"
+          color="white"
           v-html="$Feather.icons[item.icon].toSvg()"
         >
         </v-icon>
         <span
           v-if="!rail"
           :title="item.text"
-          :class="isCurrentRoute(item.route) ? 'white' : 'text-text_grey'"
+          :class="isCurrentRoute(item.route) ? 'text-background_white' : 'text-grey_dark'"
           >{{ item.text }}</span
         >
       </v-list-item>
       <v-list-item
-        class="text-primary mx-5"
+        class="text-grey_dark mx-5"
         v-if="rail == false"
         @click.stop="rail = !rail"
       >
         <v-icon class="text-purple_primary mr-5"> mdi-arrow-collapse </v-icon>
-        <span class="text-purple_primary"> Contraer </span>
+        <span class="text-purple_primary"> <b>Contraer</b> </span>
       </v-list-item>
       <v-list-item
         class="text-purple_primary "
