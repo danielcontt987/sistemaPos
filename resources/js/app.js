@@ -74,6 +74,7 @@ const customDarkTheme = {
     background_drawer: "#2e3248",
     purple_primary:"#9c5df9",
     grey_dark: "#acb0cc",
+    purple_dark:"#8436f7",
 
 
     

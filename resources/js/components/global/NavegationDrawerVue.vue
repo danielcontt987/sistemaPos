@@ -9,9 +9,6 @@ const rail = ref(false);
 const activeItem = ref(null);
 const is_dark = inject('is_dark');
 
-const toggleRail = () => {
-  drawer.value = rail;
-};
 
 const navigationItems = ref([
   { text: "Inicio", icon: "home", route: "/" },
@@ -22,7 +19,13 @@ const navigationItems = ref([
 ]);
 
 const setActive = (route) => {
-  activeItem.value = route;
+  if (route === "/punto-de-venta") {
+    activeItem.value = route;
+    rail.value = true;
+  }else{
+    activeItem.value = route;
+    rail.value = false;
+  }
 };
 
 const isCurrentRoute = (route) => {
@@ -57,7 +60,6 @@ onMounted(() => {
     v-model="drawer"
     :rail="rail"
     permanent
-    @click="toggleRail"
     color="background_drawer"
   >
     <v-list density="compact" nav>
@@ -93,7 +95,7 @@ onMounted(() => {
           v-if="rail"
           :title="item.text"
           v-html="$Feather.icons[item.icon].toSvg()"
-          color="grey_dark"
+          :class="isCurrentRoute(item.route) ? 'white' : 'text-grey_dark'"
         >
         </v-icon>
         <v-icon

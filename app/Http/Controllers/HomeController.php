@@ -27,7 +27,12 @@ class HomeController extends Controller
     }
     public function pointOfSale()
     {
-        return view('home');
+        return view('welcome');
+    }
+
+    public function clients() 
+    {
+        return view('welcome');
     }
     
 }

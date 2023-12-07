@@ -20,7 +20,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/punto-de-venta', [App\Http\Controllers\HomeController::class, 'pointOfSale'])->name('pointOfSale');
+Route::get('/punto-de-venta', [App\Http\Controllers\HomeController::class, 'pointOfSale'])->name('welcome');
+Route::get('/clientes', [App\Http\Controllers\HomeController::class, 'clients'])->name('welcome');
 
 //User
 Route::get('/get-user', [App\Http\Controllers\UserController::class, 'getUser']);
