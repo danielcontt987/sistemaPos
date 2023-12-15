@@ -1,5 +1,11 @@
 <script setup>
+import { useDate } from 'vuetify'
 import { ref } from "vue";
+import moment from "moment";
+
+const adapter = useDate();
+
+const date = ref(moment().format('YYYY-MM-DD'));
 
 const isDialogVisible = ref(false);
 
@@ -15,14 +21,12 @@ const headers = [
 const dialogVisible = ref(false)
 const openDialog = () =>{
   dialogVisible.value = true;
+  date.value = moment().format('YYYY-MM-DD');
 };
 
 const closeDialog = () =>{
   dialogVisible.value = false;
 };
-
-
-
 </script>
 
 <template>
@@ -42,6 +46,7 @@ const closeDialog = () =>{
                       <v-date-picker
                         color="purple_dark"
                         dark
+                        v-model="date"
                          class="ma-0 pa-0"
                          full-width
                          width="100%"

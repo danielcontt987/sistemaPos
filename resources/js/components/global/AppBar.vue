@@ -1,10 +1,12 @@
 <script setup>
 import { onMounted, ref, provide } from "vue";
+import { useRoute } from 'vue-router';
 import { RouterView } from "vue-router";
 import logout from "../../src/apis/user.js";
 import NavegationDrawerVue from "./NavegationDrawerVue.vue";
 import { useTheme } from "vuetify";
 const theme = useTheme();
+const routeLink = useRoute();
 //data
 const drawer = ref(true);
 const selectedDark = ref("customDarkTheme");
@@ -43,8 +45,8 @@ const setThemeLight = () => {
 };
 
 provide('is_dark', is_dark);
+provide('drawer', drawer);
 
-onMounted(() => {});
 </script>
 
 <template>
@@ -92,7 +94,7 @@ onMounted(() => {});
               </v-badge>
             </v-col>
             <v-col cols="auto">
-              <v-avatar color="surface-variant" size="35">
+              <v-avatar color="surface-variant" size="40" image="https://previews.123rf.com/images/yupiramos/yupiramos1712/yupiramos171220597/92183510-hombre-avatar-perfil-icono-imagen-vector-ilustraci%C3%B3n-dise%C3%B1o.jpg">
                 <v-menu activator="parent">
                   <v-sheet :elevation="4" :height="300" :width="200" rounded>
                     <v-col cols="12">

@@ -1,13 +1,14 @@
 <script setup>
-import { ref, onMounted, watch, defineProps, defineEmits, inject } from "vue";
+import { ref, onMounted, watch, defineProps, inject } from "vue";
 
 const props = defineProps(["drawer"]);
-const emit = defineEmits();
+// const emit = defineEmits();
 
 const drawer = ref(true);
 const rail = ref(false);
 const activeItem = ref(null);
 const is_dark = inject('is_dark');
+const drawerD = inject('drawer');
 
 
 const navigationItems = ref([
@@ -21,7 +22,8 @@ const navigationItems = ref([
 const setActive = (route) => {
   if (route === "/punto-de-venta") {
     activeItem.value = route;
-    rail.value = true;
+    rail.value = false;
+    drawerD.value = false;
   }else{
     activeItem.value = route;
     rail.value = false;
@@ -40,13 +42,17 @@ watch(
   }
 );
 
+onMounted( () =>{
+  drawerD.value = false;
+})
+
 // Emite el evento cuando el drawer local cambia
-watch(
-  () => drawer.value,
-  (newDrawer) => {
-    emit("update:drawer", newDrawer);
-  }
-);
+// watch(
+//   () => drawer.value,
+//   (newDrawer) => {
+//     emit("update:drawer", newDrawer);
+//   }
+// );
 
 // Cierra el drawer cuando el componente se monta
 onMounted(() => {

@@ -38,15 +38,13 @@
             <v-row align="center" justify="center" style="height:10%;" class="pa-0 ma-0">
                 <v-col cols="12" md="6" lg="7" class="pa-0 overflow-hidden bg-purple_light" width="100%">
                     <!-- Ajusta el ancho de la imagen a un porcentaje menor -->
-                    <v-img src="/img/login.svg" height="700" width="50%" elevation="10" class="mx-auto d-flex"/>
+                    <v-img src="/img/login.svg" height="750" width="50%" class="mx-auto d-flex"/>
                 </v-col>
                 <v-col cols="12" md="6" lg="5" class="pa-0 pa-md-7 pa-lg-12">
                     @yield('content')
                 </v-col>
             </v-row>
         </v-container>
-        
-        
     </div>
     <script>
         window.addEventListener('load', function() {

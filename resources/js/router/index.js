@@ -8,16 +8,19 @@ const routes = [
     //Home
     {
         path: '/',
+        name: "Dashboard",
         component: HomePage,
 
     },
     {
         path: '/punto-de-venta',
+        name: "Punto de venta",
         component: PointOfSale,
 
     },
     {
         path: '/clientes',
+        name: 'Clientes',
         component: Client,
 
     },
