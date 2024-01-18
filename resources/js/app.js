@@ -69,7 +69,7 @@ const customDarkTheme = {
   dark: false,
   colors: {
     white: "#fff",
-    background_nav: "#2e3248",
+    primary: "#2e3248",
     background_color: "#25293c",
     background_drawer: "#2e3248",
     purple_primary:"#9c5df9",

@@ -1,156 +1,193 @@
 <script setup>
-import { inject, ref } from "vue";
-import { useUserStore } from "../store/users";
-const store = useUserStore();
-
+import { inject } from "vue";
 
 const is_dark = inject('is_dark');
-const options = ref({
-  chart: {
-    type: "bar",
-    height: 350,
-    foreColor: "#5b5867",
-
-  },
-  plotOptions: {
-    bar: {
-      borderRadius: 10,
-      dataLabels: {
-        position: 'top', // top, center, bottom
-      },
-    }
-  },
-  colors: ["#9c5df9"],
-  dataLabels: {
-    enabled: false,
-  },
-  xaxis: {
-    categories: ["LUN", "MAR", "MIER", "JUE", "VIE", "SAB", "DOM"],
-    axisTicks: {
-      color: "#333",
-    },
-  },
-  colors: ["#9c5df9"],
-  tooltip: {
-    theme: "dark",
-  }
-});
-
-const options_dark = ref({
-  chart: {
-    type: "bar",
-    height: 350,
-    foreColor: "#acb0cc",
-
-  },
-  plotOptions: {
-    bar: {
-      borderRadius: 10,
-      dataLabels: {
-        position: 'top', // top, center, bottom
-      },
-    }
-  },
-  colors: ["#9c5df9"],
-  dataLabels: {
-    enabled: false,
-  },
-  xaxis: {
-    categories: ["LUN", "MAR", "MIER", "JUE", "VIE", "SAB", "DOM"],
-    axisTicks: {
-      color: "#333",
-    },
-  },
-  colors: ["#9c5df9"],
-  tooltip: {
-    theme: "dark",
-  }
-});
-
-const series = ref([
-  {
-    name: "series-1",
-    data: [30, 40, 45, 50, 49, 60, 70],
-  },
-]);
 </script>
-
-
 <template>
   <v-container fluid>
     <v-row>
-      <v-col cols="12" lg="7">
-        <h3 class="text-grey_dark">
-          Bienvenda de nuevo, {{ store.user.name }} ✌️
-        </h3>
-        <p class="text-grey_dark">
-          Estos son algunos de los datos generales de tu negocio
-        </p>
+      <v-col cols="12">
+        <v-text-field variant="outlined" label="Buscar" />
       </v-col>
-      <v-col lg="5"></v-col>
-    </v-row>
-    <v-row class="d-flex align-center">
-      <v-col cols="auto">
-        <v-avatar size="54" rounded="2" color="purple_light2">
-          <v-icon size="30" color="purple_dark_accent">mdi-chart-line</v-icon>
-        </v-avatar>
+      <v-col
+        cols="6"
+        sm="4"
+        md="4"
+        lg="3"
+        @click="$router.push({ name: 'Clientes' })"
+      >
+        <div
+          class="rounded-card d-flex justify-center align-center flex-column py-5"
+        >
+          <v-icon class="mb-2 icon-text" style="font-size: 4rem" :class="is_dark === false ? 'text-primary' : 'text-white'"
+            >mdi-account-circle</v-icon
+          >
+          <p
+            class="icon-text px-4 text-center d-inline-block text-truncate text-primary"
+            :class="is_dark === false ? 'text-primary' : 'text-white'"
+          >
+            {{ "Clientes" }}
+          </p>
+        </div>
       </v-col>
-      <v-col>
-        <h5 class="text-base text-grey_dark">Total de ventas 2023</h5>
-        <h4 class="text-h4 font-weight-medium text-purple_dark_accent">500</h4>
+      <v-col
+        cols="6"
+        sm="4"
+        md="4"
+        lg="3"
+        @click="$router.push({ name: 'Punto de venta' })"
+      >
+        <div
+          class="rounded-card d-flex justify-center align-center flex-column py-5"
+        >
+          <v-icon class="mb-2 icon-text" style="font-size: 4rem" :class="is_dark === false ? 'text-primary' : 'text-white'"
+            >mdi-account-circle</v-icon
+          >
+          <p
+            class="icon-text px-4 text-center d-inline-block text-truncate text-primary"
+            :class="is_dark === false ? 'text-primary' : 'text-white'"
+          >
+            {{ "Punto de venta" }}
+          </p>
+        </div>
       </v-col>
-      <v-col cols="auto">
-        <v-avatar size="54" rounded="2" color="blue_light_sky">
-          <v-icon size="30" color="aqua_normal">mdi-account-outline</v-icon>
-        </v-avatar>
+      
+
+      
+      <!-- <v-col cols="6" sm="4" md="4" lg="3">
+        <div
+          class="rounded-card d-flex justify-center align-center flex-column py-5"
+        >
+          <v-icon class="mb-2 icon-text text-primary" style="font-size: 4rem"
+            >mdi-account-group</v-icon
+          >
+          <h4
+            class="icon-text px-4 text-center d-inline-block text-truncate text-primary"
+          >
+            {{ "Usuarios" }}
+          </h4>
+        </div>
       </v-col>
-      <v-col>
-        <h5 class="text-base text-grey_dark">Usuarios registrados</h5>
-        <h4 class="text-h4 font-weight-medium text-aqua_normal">5</h4>
+      <v-col
+        cols="6"
+        sm="4"
+        md="4"
+        lg="3"
+        @click="$router.push({ name: 'PointOfSale' })"
+      >
+        <div
+          class="rounded-card d-flex justify-center align-center flex-column py-5"
+        >
+          <v-icon class="mb-2 icon-text text-primary" style="font-size: 4rem"
+            >mdi-point-of-sale</v-icon
+          >
+          <h4
+            class="icon-text px-4 text-center d-inline-block text-truncate text-primary"
+          >
+            {{ "Punto de venta" }}
+          </h4>
+        </div>
       </v-col>
-      <v-col cols="auto">
-        <v-avatar size="54" rounded="2" color="orange_light2">
-          <v-icon size="30" color="orange_l2">mdi-account-group-outline</v-icon>
-        </v-avatar>
+      <v-col cols="6" sm="4" md="4" lg="3">
+        <div
+          class="rounded-card d-flex justify-center align-center flex-column py-5"
+        >
+          <v-icon class="mb-2 icon-text text-primary" style="font-size: 4rem"
+            >mdi-package-variant-closed</v-icon
+          >
+          <h4
+            class="icon-text px-4 text-center d-inline-block text-truncate text-primary"
+          >
+            {{ "Almacén" }}
+          </h4>
+        </div>
       </v-col>
-      <v-col>
-        <h5 class="text-base text-grey_dark">Clientes</h5>
-        <h4 class="text-h4 font-weight-medium text-orange_l2">20</h4>
+      <v-col cols="6" sm="4" md="4" lg="3">
+        <div
+          class="rounded-card d-flex justify-center align-center flex-column py-5"
+        >
+          <v-icon class="mb-2 icon-text text-primary" style="font-size: 4rem"
+            >mdi-store</v-icon
+          >
+          <h4
+            class="icon-text px-4 text-center d-inline-block text-truncate text-primary"
+          >
+            {{ "Áreas" }}
+          </h4>
+        </div>
       </v-col>
-      <v-col cols="auto">
-        <v-avatar size="54" rounded="2" color="wather_melon">
-          <v-icon size="30" color="red_dark_2">mdi-fruit-watermelon</v-icon>
-        </v-avatar>
+      <v-col cols="6" sm="4" md="4" lg="3">
+        <div
+          class="rounded-card d-flex justify-center align-center flex-column py-5"
+        >
+          <v-icon class="mb-2 icon-text text-primary" style="font-size: 4rem"
+            >mdi-currency-usd</v-icon
+          >
+          <h4
+            class="icon-text px-4 text-center d-inline-block text-truncate text-primary"
+          >
+            {{ "Gastos" }}
+          </h4>
+        </div>
       </v-col>
-      <v-col>
-        <h5 class="text-base text-grey_dark">Cantidad de productos</h5>
-        <h4 class="text-h4 font-weight-medium text-primary">50</h4>
+      <v-col cols="6" sm="4" md="4" lg="3">
+        <div
+          class="rounded-card d-flex justify-center align-center flex-column py-5"
+        >
+          <v-icon class="mb-2 icon-text text-primary" style="font-size: 4rem"
+            >mdi-bank</v-icon
+          >
+          <h4
+            class="icon-text px-4 text-center d-inline-block text-truncate text-primary"
+          >
+            {{ "Bancos" }}
+          </h4>
+        </div>
       </v-col>
-    </v-row>
-    <v-row>
-      <v-col cols="12" lg="7">
-        <v-card rounded="2" class="rounded-md" flat color="background_nav">
-          <v-card-title>
-            <h5 class="text-grey_dark">No. de ventas en los últimos días</h5>
-            <div>
-              <apexchart
-                type="bar"
-                height="350"
-                :options="is_dark === true ? options_dark : options"
-                :series="series"
-              ></apexchart>
-            </div>
-          </v-card-title>
-          <v-card-text> </v-card-text>
-        </v-card>
-      </v-col>
+      <v-col cols="6" sm="4" md="4" lg="3">
+        <div
+          class="rounded-card d-flex justify-center align-center flex-column py-5"
+        >
+          <v-icon class="mb-2 icon-text text-primary" style="font-size: 4rem"
+            >mdi-chart-arc</v-icon
+          >
+          <h4
+            class="icon-text px-4 text-center d-inline-block text-truncate text-primary"
+          >
+            {{ "Estadísticas" }}
+          </h4>
+        </div>
+      </v-col> -->
     </v-row>
   </v-container>
 </template>
 
 <style scoped>
- .text-base{
-    font-size: .9375rem;
-    line-height: 1.3125rem;
- }
+.primary {
+  color: var(--v-primary);
+}
+
+
+.rounded-card {
+  border-radius: 1rem !important;
+  background-color: transparent;
+  transition: 100ms;
+  -webkit-box-shadow: inset 0px 0px 0px 2px #001f4a;
+  -moz-box-shadow: inset 0px 0px 0px 2px #001f4a;
+  box-shadow: inset 0px 0px 0px 2px #001f4a;
+}
+
+.rounded-card:hover {
+  background-color: #001f4a;
+  cursor: pointer;
+  border: none;
+  transition: 400ms;
+}
+
+.rounded-card:hover .icon-text {
+  color: #fff !important;
+}
+.rounded-card:hover .icon-text {
+  color: #fff !important;
+}
 </style>

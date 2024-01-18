@@ -25,3 +25,9 @@ Route::get('/clientes', [App\Http\Controllers\HomeController::class, 'clients'])
 
 //User
 Route::get('/get-user', [App\Http\Controllers\UserController::class, 'getUser']);
+
+//Client
+Route::prefix('client')->group(function () {
+    Route::get('/list', [App\Http\Controllers\ClientController::class, 'list']);
+    Route::post('/store', [App\Http\Controllers\ClientController::class, 'store']);
+});
