@@ -27,25 +27,45 @@ import { createPinia } from 'pinia';
 
 import VueApexCharts from "vue3-apexcharts";
 
+// Flatpickr
+import flatpickr from 'flatpickr'
+import 'flatpickr/dist/flatpickr.css'
+
 const customLightTheme = {
   colors: {
+    primary: '#5d87ff',
+    blueSky: '#ecf2ff',
+    background: '#fafafb',
+    white: '#FFFFFF',
+    background_drawer: "#FFF",
     background_nav: "#ffffff",
     text_grey: "#7f7c87",
     background_color:"#EDECF4",
-    primary: '#001f4a',
+    grey_dark: "#5b5867",
+    greyLight: '#92969e',
+    fail: '#F50057',
+    successLight: "#e2fbf6",
+    greenLight: "#13deb9",
+    lightprimary: "#ecf2ff",
+    lightwarning: "#fef5e5",
+    lightsecondary: "#e8f7ff",
+    lighterror: "#fdede8",
+    lightsuccess: "#e6fffa",
+
+    
+    /*
     primary_dark: '#051942',
     fail: '#F50057',
     secondary: '#00337C',
     secondary_dark: '#001f4a',
-    background: '#E2E2E2',
-    white: '#FFFFFF',
+   
     grey: "#A2A2A2",
     black: '#000000',
     success: '#27AE60',
     accent: "#00CFB5",
     error: "#C22F2F",
     success_card: '#27AE60',
-    purple_light: "#F9F0FF",
+    blueLight: "#f1f3fd",
     purple_primary:"#9c5df9",
     purple_light2: "#e2dff8",
     purple_dark_accent: "#7366ef", 
@@ -53,7 +73,7 @@ const customLightTheme = {
     blue_light: "#fcebf7",
     sky_blue: "#fcebf7",
     purple_dark:"#8436f7",
-    grey_dark: "#5b5867",
+    
     error_light: "#ea5455",
     blue_light_sky: "#d0f0f7",
     aqua_normal: "#00cfe8",
@@ -61,7 +81,7 @@ const customLightTheme = {
     orange_l2:"#ff9e43",
     wather_melon: "#fcc3c3",
     red_dark_2: "#ff3838",
-    background_drawer: "#FFF",
+    */
 
   },
 };
@@ -129,6 +149,7 @@ app.component('App', App);
 app.use(router);
 app.use(vuetify);
 app.use(VueApexCharts);
+app.use(flatpickr);
 
 
 app.config.globalProperties.$Feather = feather;

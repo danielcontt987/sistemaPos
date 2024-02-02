@@ -43,7 +43,7 @@ watch(
 );
 
 onMounted( () =>{
-  drawerD.value = false;
+  rail.value = true;
 })
 
 // Emite el evento cuando el drawer local cambia
@@ -94,7 +94,7 @@ onMounted(() => {
           setActive(item.route);
           $router.push(item.route);
         "
-        :class="{ 'bg-red': isCurrentRoute(item.route) }"
+        :class="{ 'bg-primary': isCurrentRoute(item.route) }"
         class="overflow-y text-white"
       >
         <v-icon
@@ -140,13 +140,7 @@ onMounted(() => {
   </v-navigation-drawer>
 </template>
 <style scoped>
-.bg-red {
-  background: rgb(115, 103, 240);
-  background: linear-gradient(
-    90deg,
-    rgba(115, 103, 240, 1) 25%,
-    rgba(124, 113, 241, 1) 48%,
-    rgba(143, 133, 244, 1) 62%
-  );
+.bg-primary {
+  background: #5d87ff;
 }
 </style>

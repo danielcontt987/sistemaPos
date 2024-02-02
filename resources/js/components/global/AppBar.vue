@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted, ref, provide } from "vue";
-import { useRoute } from 'vue-router';
+import { useRoute } from "vue-router";
 import { RouterView } from "vue-router";
 import logout from "../../src/apis/user.js";
 import NavegationDrawerVue from "./NavegationDrawerVue.vue";
@@ -33,7 +33,6 @@ const toggleDrawer = () => {
   updateDrawer(!drawer.value);
 };
 
-
 const setTheme = () => {
   theme.global.name.value = selectedDark.value;
   is_dark.value = !is_dark.value;
@@ -44,9 +43,8 @@ const setThemeLight = () => {
   is_dark.value = !is_dark.value;
 };
 
-provide('is_dark', is_dark);
-provide('drawer', drawer);
-
+provide("is_dark", is_dark);
+provide("drawer", drawer);
 </script>
 
 <template>
@@ -54,25 +52,33 @@ provide('drawer', drawer);
     :drawer="drawer"
     @update:drawer="updateDrawer"
   ></NavegationDrawerVue>
-  <v-main class="bg-background_color">
+  <v-main class="bg-white">
     <v-container fluid>
-      <v-card class="rounded-md" flat color="background_nav">
-        <v-card-text>
-          <v-row align="center">
-            <!-- Iconos a la izquierda -->
-            <v-col cols="auto" class="p-0">
-              <v-app-bar-nav-icon
-                variant="text"
-                @click.stop="toggleDrawer"
-              ></v-app-bar-nav-icon>
-            </v-col>
+      <v-app-bar elevation="0" color="white">
+        <template v-slot:prepend>
+          <v-btn icon>
+            <v-icon
+              variant="text"
+              class="text-grey"
+              @click.stop="toggleDrawer"
+              v-html="$Feather.icons['menu'].toSvg()"
+            >
+            </v-icon>
+          </v-btn>
+          <v-btn icon>
+            <v-icon
+              variant="text"
+              class="text-grey"
+              @click.stop="toggleDrawer"
+              v-html="$Feather.icons['search'].toSvg()"
+            >
+            </v-icon>
+          </v-btn>
+        </template>
 
-            <!-- Espacio entre los iconos izquierdos y derechos (opcional) -->
-            <v-col class="grow"></v-col>
-
-            <!-- Iconos a la derecha -->
-            <v-col cols="auto">
-              <v-menu transition="scale-transition">
+        <v-app-bar-title> Photos </v-app-bar-title>
+        <template v-slot:append>
+          <v-menu transition="scale-transition">
                 <template v-slot:activator="{ props }">
                   <v-icon color="grey_dark" v-bind="props">
                     {{ is_dark === false ?  "mdi-weather-sunny" : "mdi-moon-waning-crescent" }}
@@ -87,28 +93,25 @@ provide('drawer', drawer);
                   </v-list-item>
                 </v-list>
               </v-menu>
-            </v-col>
-            <v-col cols="auto">
-              <v-badge color="purple_primary" class="py-2">
-                <v-icon>mdi-bell-outline</v-icon>
-              </v-badge>
-            </v-col>
-            <v-col cols="auto">
-              <v-avatar color="surface-variant" size="40" image="https://previews.123rf.com/images/yupiramos/yupiramos1712/yupiramos171220597/92183510-hombre-avatar-perfil-icono-imagen-vector-ilustraci%C3%B3n-dise%C3%B1o.jpg">
-                <v-menu activator="parent">
-                  <v-sheet :elevation="4" :height="300" :width="200" rounded>
-                    <v-col cols="12">
-                      <v-btn class="bg-error_light" @click="logOut()"
-                        >Log Out</v-btn
-                      >
-                    </v-col>
-                  </v-sheet>
-                </v-menu>
-              </v-avatar>
-            </v-col>
-          </v-row>
-        </v-card-text>
-      </v-card>
+          <v-btn icon class="mr-3">
+            <v-badge color="fail" class="py-2">
+              <v-icon
+                variant="text"
+                class="text-grey"
+                @click.stop="toggleDrawer"
+                v-html="$Feather.icons['bell'].toSvg()"
+              >
+              </v-icon>
+            </v-badge>
+          </v-btn>
+          <v-avatar>
+            <v-img
+              src="https://cdn.vuetifyjs.com/images/john.jpg"
+              alt="John"
+            ></v-img>
+          </v-avatar>
+        </template>
+      </v-app-bar>
     </v-container>
     <router-view></router-view>
   </v-main>

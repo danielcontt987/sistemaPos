@@ -21,6 +21,7 @@
         "@tabler/icons-vue": "^2.42.0",
         "apexcharts": "^3.44.0",
         "feather-icons": "^4.29.1",
+        "flatpickr": "^4.6.13",
         "moment": "^2.29.4",
         "pinia": "^2.1.7",
         "tabler-icons": "^1.35.0",

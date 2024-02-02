@@ -96,7 +96,7 @@ class DataFake extends Seeder
             'name' => "Ejemplo",
             'last_name' => "Ejemplo",
             'telephone' => 321654984,
-            'email' => "correo@correo.com",
+            'email' => "laisha@hotmail.com",
             'password' => Hash::make('12345678'),
             'is_edit' => false,
             'curp' => "COPD990516HNTNRN03",
