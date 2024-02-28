@@ -3,6 +3,7 @@ import {createRouter, createWebHistory} from 'vue-router';
 import HomePage from '../view/Menu.vue'; 
 import PointOfSale from '../view/PointOfSale.vue'; 
 import Client from '../view/Client.vue'; 
+import Setting from '../view/Setting.vue'
 
 const routes = [
     //Home
@@ -23,6 +24,11 @@ const routes = [
         name: 'Clientes',
         component: Client,
 
+    },
+    {
+        path: '/ajustes',
+        name: 'Ajustes',
+        component: Setting,
     },
 ]
 

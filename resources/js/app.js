@@ -35,7 +35,7 @@ const customLightTheme = {
   colors: {
     primary: '#5d87ff',
     blueSky: '#ecf2ff',
-    background: '#fafafb',
+    background: '#92969e',
     white: '#FFFFFF',
     background_drawer: "#FFF",
     background_nav: "#ffffff",
@@ -51,6 +51,8 @@ const customLightTheme = {
     lightsecondary: "#e8f7ff",
     lighterror: "#fdede8",
     lightsuccess: "#e6fffa",
+    titleCard: "#14006E",
+    chipCard: "#ecf2ff"
 
     
     /*

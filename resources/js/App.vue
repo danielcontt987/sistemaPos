@@ -7,9 +7,3 @@
 <template>
   <AppBarVue></AppBarVue>
 </template>
-
-
-
-
-
-

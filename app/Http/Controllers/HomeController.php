@@ -34,5 +34,10 @@ class HomeController extends Controller
     {
         return view('welcome');
     }
+
+    public function ajustes() 
+    {
+        return view('welcome');
+    }
     
 }

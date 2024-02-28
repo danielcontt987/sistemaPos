@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, watch, defineProps, inject } from "vue";
+import { ref, onMounted, watch, inject } from "vue";
 
 const props = defineProps(["drawer"]);
 // const emit = defineEmits();
@@ -17,6 +17,7 @@ const navigationItems = ref([
   { text: "Punto de venta", icon: "shopping-bag", route: "/punto-de-venta" },
   { text: "Ventas", icon: "dollar-sign", route: "/ventas" },
   { text: "Reportes", icon: "bar-chart-2", route: "/reportes" },
+  { text: "Ajustes", icon: "settings", route: "/ajustes" },
 ]);
 
 const setActive = (route) => {
@@ -73,7 +74,7 @@ onMounted(() => {
         <img
           v-if="is_dark === false"
           src="../../../../public/img/img3.png"
-          width="150"
+          width="190"
           height="50"
           alt="Logo"
           class="mb-3"
