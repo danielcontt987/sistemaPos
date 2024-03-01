@@ -13,7 +13,7 @@ import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
 import router from './router/index.js';
 import { useDisplay } from 'vuetify';
-
+import { es } from "vuetify/locale";
 //Icons Feather
 import * as feather from 'feather-icons';
 
@@ -125,6 +125,11 @@ const vuetify = createVuetify({
         customDarkTheme,
       },
     },
+    locale: {
+      locale: "es",
+      fallback: "es", // Especifica la localidad de respaldo una vez
+      messages: { es },
+  },
 })
 
 
@@ -149,7 +154,12 @@ app.use(pinia);
 
 app.component('App', App);
 app.use(router);
-app.use(vuetify);
+app.use(vuetify,{
+  lang: {
+    locales: { es },
+    current: 'es',
+  },
+});
 app.use(VueApexCharts);
 app.use(flatpickr);
 

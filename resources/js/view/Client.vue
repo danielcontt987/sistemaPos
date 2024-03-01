@@ -7,6 +7,7 @@ const breakpointSize = useDisplay();
 const adapter = useDate();
 
 const openModal = ref(false);
+const openDialogDate = ref(false);
 const sizeDisplay = ref("");
 const headers = [
   {
@@ -28,6 +29,9 @@ const closeDialog = () => {
   dialogVisible.value = false;
 };
 
+const openModalDate = () => {
+  openDialogDate.value = true;
+}
 const withComputed = computed(() => {
     if (breakpointSize.lg.value) {
       return "50vw";
@@ -91,6 +95,7 @@ const withComputed = computed(() => {
                   color="primary"
                   label="Buscar cliente"
                   class="text-grey_dark"
+                  @click="openModalDate()"
                 >
                 </v-text-field>
               </v-col>
@@ -139,6 +144,47 @@ const withComputed = computed(() => {
         </v-card-title>
       </v-card>
     </v-dialog>
+    <v-dialog v-model="openDialogDate" width="420" height="auto" class="overflow-hidden">
+      <v-card rounded="4" class="overflow-hidden">
+        <v-card-text style="padding: 0;">
+         <v-locale-provider locale="es">
+            <v-date-picker
+              width="430"
+              class="my-0"
+              color="primary"
+            ></v-date-picker>
+         </v-locale-provider>
+        </v-card-text>
+        <v-card-actions>
+            <v-row>
+                <v-col cols="12" md="6" order="2" order-md="1">
+                    <v-btn
+                        class="rounded-lg"
+                        large
+                        text
+                        depressed
+                        block
+                        color="fail"
+                        >
+                        Cerrar
+                    </v-btn>
+                </v-col>
+                <v-col cols="12" md="6" order="1" order-md="2">
+                    <v-btn
+                        class="rounded-lg"
+                        large
+                        depressed
+                        block
+                        color="primary"
+                        >
+                        Aceptar
+                    </v-btn>
+                </v-col>
+            </v-row>
+        </v-card-actions>
+
+      </v-card>
+    </v-dialog>
   </v-container>
 </template>
 
@@ -162,4 +208,14 @@ const withComputed = computed(() => {
 .v-field--center-affix {
   font-size: 16px;
 }
+
+.v-date-picker-controls{
+  color: black;
+}
+.v-date-picker-month__days{
+  color: black;
+}
+
+.v-date-picker-months__content .v-btn {color: black;}
+
 </style>

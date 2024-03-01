@@ -20,6 +20,8 @@
         "@mdi/font": "^7.3.67",
         "@tabler/icons-vue": "^2.42.0",
         "apexcharts": "^3.44.0",
+        "date-fns": "^3.3.1",
+        "dayjs": "^1.11.10",
         "feather-icons": "^4.29.1",
         "flatpickr": "^4.6.13",
         "moment": "^2.29.4",
