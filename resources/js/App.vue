@@ -5,5 +5,8 @@
 
 
 <template>
-  <AppBarVue></AppBarVue>
+   <v-main class="bg-white">
+     <AppBarVue></AppBarVue>
+     <router-view></router-view>
+   </v-main>
 </template>

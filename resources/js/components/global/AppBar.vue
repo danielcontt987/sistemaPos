@@ -1,18 +1,12 @@
 <script setup>
-import { onMounted, ref, provide } from "vue";
-import { useRoute } from "vue-router";
+import {ref, provide } from "vue";
 import { RouterView } from "vue-router";
 import logout from "../../src/apis/user.js";
-import NavegationDrawerVue from "./NavegationDrawerVue.vue";
 import { useTheme } from "vuetify";
 const theme = useTheme();
-const routeLink = useRoute();
 //data
-const drawer = ref(true);
 const selectedDark = ref("customDarkTheme");
 const selectedLight = ref("customLightTheme");
-const DarkMode = ref("Dark");
-const LightMode = ref("Light");
 const is_dark = ref(false);
 
 //Methods
@@ -25,60 +19,48 @@ const logOut = async () => {
   }
 };
 
-const updateDrawer = (value) => {
-  drawer.value = value;
-};
-
-const toggleDrawer = () => {
-  updateDrawer(!drawer.value);
-};
-
-const setTheme = () => {
-  theme.global.name.value = selectedDark.value;
-  is_dark.value = !is_dark.value;
-};
-
-const setThemeLight = () => {
-  theme.global.name.value = selectedLight.value;
-  is_dark.value = !is_dark.value;
-};
-
-provide("is_dark", is_dark);
-provide("drawer", drawer);
 </script>
 
 <template>
-  <NavegationDrawerVue
-    :drawer="drawer"
-    @update:drawer="updateDrawer"
-  ></NavegationDrawerVue>
-  <v-main class="bg-white">
-    <v-container fluid>
-      <v-app-bar elevation="0" color="white">
+      <v-app-bar elevation="0" color="white" height="80" class="my-0">
         <template v-slot:prepend>
-          <v-btn icon>
-            <v-icon
-              variant="text"
-              class="text-grey"
-              @click.stop="toggleDrawer"
-              v-html="$Feather.icons['menu'].toSvg()"
-            >
-            </v-icon>
-          </v-btn>
-          <v-btn icon>
-            <v-icon
-              variant="text"
-              class="text-grey"
-              @click.stop="toggleDrawer"
-              v-html="$Feather.icons['search'].toSvg()"
-            >
-            </v-icon>
-          </v-btn>
+          <img src="../../../../public/img/logo.png" width="200" class="ml-3">
         </template>
 
-        <v-app-bar-title> Photos </v-app-bar-title>
+        <v-app-bar-title class="text-center"> 
+          <v-btn
+            color="dark"
+            class="font-weight-light mr-10"
+          >
+            Directorio
+          </v-btn>
+          <v-btn
+            color="dark"
+            class="font-weight-light mr-10"
+          >
+            Capacitación
+          </v-btn>
+          <v-btn
+            color="dark"
+            class="font-weight-light mr-10"
+          >
+            Programación
+          </v-btn>
+        </v-app-bar-title>
         <template v-slot:append>
-          <v-menu transition="scale-transition">
+          <v-btn
+            color="dark"
+            class="font-weight-light mr-10"
+          >
+            Iniciar sesión
+          </v-btn>
+          <v-btn
+          variant="outlined"
+          rounded="0"
+          color="wine"
+          class="mr-3"
+          >REGISTRATE</v-btn>
+          <!-- <v-menu transition="scale-transition">
                 <template v-slot:activator="{ props }">
                   <v-icon color="grey_dark" v-bind="props">
                     {{ is_dark === false ?  "mdi-weather-sunny" : "mdi-moon-waning-crescent" }}
@@ -92,7 +74,7 @@ provide("drawer", drawer);
                     <v-list-item-title class="text-grey_dark"> <v-icon color="grey_dark">mdi-weather-sunny</v-icon> {{ LightMode }}</v-list-item-title>
                   </v-list-item>
                 </v-list>
-              </v-menu>
+          </v-menu>
           <v-btn icon class="mr-3">
             <v-badge color="fail" class="py-2">
               <v-icon
@@ -109,12 +91,9 @@ provide("drawer", drawer);
               src="https://cdn.vuetifyjs.com/images/john.jpg"
               alt="John"
             ></v-img>
-          </v-avatar>
+          </v-avatar> -->
         </template>
       </v-app-bar>
-    </v-container>
-    <router-view></router-view>
-  </v-main>
 </template>
 
 <style scoped>
