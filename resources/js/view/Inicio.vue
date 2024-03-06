@@ -209,7 +209,7 @@
       </v-card>
     </v-col>
   </v-row>
-  <v-row>
+  <v-row class="mb-10">
     <v-col cols="12" class="d-flex justify-center">
       <v-btn class="text-dark" rounded="0" variant="outlined">
         Ver todos los programas
