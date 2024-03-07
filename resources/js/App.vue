@@ -1,12 +1,17 @@
 <script setup>
-    import AppBarVue from './components/global/AppBar.vue';
-
+import AppBarVue from "./components/global/AppBar.vue";
 </script>
-
-
 <template>
-   <v-main class="bg-white">
-     <AppBarVue></AppBarVue>
-     <router-view></router-view>
-   </v-main>
+  <!-- <div>
+    
+    <v-main>
+      <RouterView />
+    </v-main>
+  </div> -->
+  <v-layout>
+    <AppBarVue></AppBarVue>
+    <v-main>
+        <router-view></router-view>
+    </v-main>
+  </v-layout>
 </template>

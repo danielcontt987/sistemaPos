@@ -4,7 +4,7 @@ import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
     server: {
-        host: 'localhost',
+        host: '192.168.1.10',
       },
     plugins: [
         laravel({

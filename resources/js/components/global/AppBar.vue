@@ -1,13 +1,12 @@
 <script setup>
-import {ref, provide } from "vue";
+import { ref, provide } from "vue";
 import { RouterView } from "vue-router";
 import logout from "../../src/apis/user.js";
-import { useTheme } from "vuetify";
-const theme = useTheme();
+import { useDisplay } from 'vuetify';
+const {mdAndUp, smAndDown} = useDisplay();
+
 //data
-const selectedDark = ref("customDarkTheme");
-const selectedLight = ref("customLightTheme");
-const is_dark = ref(false);
+const drawer = ref(false);
 
 //Methods
 const logOut = async () => {
@@ -19,49 +18,65 @@ const logOut = async () => {
   }
 };
 
+const items = ref([
+        {
+            title: 'Directorio',
+            value: 'foo',
+        },
+        {
+            title: 'Capacitación',
+            value: 'bar',
+        },
+        {
+            title: 'Programas y certificaciones',
+            value: 'fizz',
+        }
+    ]);
+
 </script>
 
 <template>
-      <v-app-bar elevation="0" color="white" height="80" class="my-0">
-        <template v-slot:prepend>
-          <img src="../../../../public/img/logo.png" width="200" class="ml-3">
-        </template>
+  <v-app-bar elevation="0" color="white" height="80" class="my-0">
+    <template v-slot:prepend>
+      <img
+        src="../../../../public/img/logo.png"
+        width="200"
+        class="ml-3"
+        v-if="mdAndUp"
+      />
+      <img src="../../../../public/img/logo.png" width="150" v-else />
+    </template>
 
-        <v-app-bar-title class="text-center"> 
-          <v-btn
-            color="dark"
-            class="font-weight-light mr-10"
-          >
-            Directorio
-          </v-btn>
-          <v-btn
-            color="dark"
-            class="font-weight-light mr-10"
-          >
-            Capacitación
-          </v-btn>
-          <v-btn
-            color="dark"
-            class="font-weight-light mr-10"
-          >
-            Programación
-          </v-btn>
-        </v-app-bar-title>
-        <template v-slot:append>
-          <v-btn
-            color="dark"
-            class="font-weight-light mr-10"
-          >
-            Iniciar sesión
-          </v-btn>
-          <v-btn
-          variant="outlined"
-          rounded="0"
-          color="wine"
-          class="mr-3"
-          >REGISTRATE</v-btn>
-        </template>
-      </v-app-bar>
+    <v-app-bar-title class="text-center" v-if="mdAndUp">
+      <v-btn color="dark" class="font-weight-light mr-10"> Directorio </v-btn>
+      <v-btn color="dark" class="font-weight-light mr-10"> Capacitación </v-btn>
+      <v-btn color="dark" class="font-weight-light mr-10"> Programación </v-btn>
+    </v-app-bar-title>
+    <template v-slot:append v-if="mdAndUp">
+      <v-btn color="dark" class="font-weight-light mr-10">
+        Iniciar sesión
+      </v-btn>
+      <v-btn variant="outlined" rounded="0" color="wine" class="mr-3"
+        >REGISTRATE</v-btn
+      >
+    </template>
+    <v-app-bar-nav-icon class="mr-5" variant="text" @click.stop="drawer = !drawer" v-if="smAndDown">
+      <template v-if="drawer">
+        <v-icon color="">mdi-close</v-icon>
+      </template>
+      <template v-else>
+        <v-icon>mdi-menu</v-icon>
+      </template>
+    </v-app-bar-nav-icon>
+  </v-app-bar>
+  <v-navigation-drawer
+          v-if="smAndDown"
+          v-model="drawer"
+          app
+        >
+      <v-list nav density="compact" :items="items"></v-list>
+  </v-navigation-drawer>
+
 </template>
 
 <style scoped>

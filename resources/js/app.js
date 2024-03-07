@@ -12,7 +12,6 @@ import { createVuetify} from 'vuetify';
 import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
 import router from './router/index.js';
-import { useDisplay } from 'vuetify';
 import { es } from "vuetify/locale";
 //Icons Feather
 import * as feather from 'feather-icons';
@@ -70,9 +69,8 @@ import App from './App.vue';
 
 const app = createApp({
   setup(){
-    const { mdAndUp, smAndDown } = useDisplay();
     const show1 = ref(false)
-    return {mdAndUp,smAndDown, show1}
+    return {show1}
   }
 });
 //Pinia
