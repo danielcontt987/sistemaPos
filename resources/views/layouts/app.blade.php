@@ -33,11 +33,11 @@
         </div>
     </div>
     <div id="app">
-        <v-container fluid class="white pa-0 ma-0">
-            <v-row align="center" justify="center" class="pa-0 ma-0 overflow-hidden">
-                <v-col cols="12" md="7" lg="8" class="d-lg-flex align-center justify-center authentication position-relative bg-blueLight" width="100%">
+        <v-container fluid class="white">
+            <v-row align="center" justify="center" class="overflow-hidden">
+                <v-col cols="12" md="7" lg="8" class="d-lg-flex align-right justify-start authentication position-relative bg-blueLight" width="100%">
                     <!-- Ajusta el ancho de la imagen a un porcentaje menor -->
-                    <v-img src="/img/login-bg.svg" height="650" width="50%" class="mx-auto d-flex"/>
+                    <v-img src="/img/principal.png" height="100vh" width="50%" class="mx-auto d-flex"/>
                 </v-col>
                 <v-col cols="12" md="5" lg="4" class="pa-0">
                     @yield('content')

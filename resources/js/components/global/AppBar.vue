@@ -53,7 +53,7 @@ const items = ref([
       <v-btn color="dark" class="font-weight-light mr-10"> Programación </v-btn>
     </v-app-bar-title>
     <template v-slot:append v-if="mdAndUp">
-      <v-btn color="dark" class="font-weight-light mr-10">
+      <v-btn color="dark" class="font-weight-light mr-10" @click="logOut()">
         Iniciar sesión
       </v-btn>
       <v-btn variant="outlined" rounded="0" color="wine" class="mr-3"
