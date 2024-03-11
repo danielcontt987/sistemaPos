@@ -1,7 +1,15 @@
 <script setup>
-import { ref, provide } from "vue";
+import { ref, provide, onMounted } from "vue";
 import { RouterView } from "vue-router";
 import logout from "../../src/apis/user.js";
+
+const props = defineProps({
+   user: {
+     type: Object,
+     require: true
+   }
+})
+
 import { useDisplay } from 'vuetify';
 const {mdAndUp, smAndDown} = useDisplay();
 
@@ -16,6 +24,11 @@ const logOut = async () => {
   } catch (error) {
     console.log(error);
   }
+
+onMounted( () => {
+  console.log('getUser');
+}) 
+
 };
 
 const items = ref([
@@ -53,10 +66,14 @@ const items = ref([
       <v-btn color="dark" class="font-weight-light mr-10"> Programación </v-btn>
     </v-app-bar-title>
     <template v-slot:append v-if="mdAndUp">
-      <v-btn color="dark" class="font-weight-light mr-10" @click="logOut()">
+      <v-btn color="dark" class="font-weight-light mr-10" @click="logOut()" v-if="user == null">
         Iniciar sesión
       </v-btn>
+      <v-btn color="dark" class="font-weight-light mr-10" @click="logOut()" v-if="user != null">
+        Cerrar sesión
+      </v-btn>
       <v-btn variant="outlined" rounded="0" color="wine" class="mr-3"
+      v-if="user == null"
         >REGISTRATE</v-btn
       >
     </template>

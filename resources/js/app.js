@@ -8,7 +8,7 @@ import './bootstrap';
 import 'vuetify/styles';
 import '@mdi/font/css/materialdesignicons.css';
 import { createApp, ref } from 'vue';
-import { createVuetify} from 'vuetify';
+import { createVuetify, useDisplay} from 'vuetify';
 import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
 import router from './router/index.js';
@@ -69,8 +69,9 @@ import App from './App.vue';
 
 const app = createApp({
   setup(){
+    const { mdAndUp, mdAndDown } = useDisplay();
     const show1 = ref(false)
-    return {show1}
+    return {mdAndUp,mdAndDown, show1}
   }
 });
 //Pinia

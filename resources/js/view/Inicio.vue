@@ -45,21 +45,24 @@
       </h5>
     </v-col>
     <v-col cols="12" class="pb-5">
-        <Brand/>
+      <Brand />
     </v-col>
   </v-row>
   <v-row class="bg-white px-12">
-    <v-col cols="12"  lg="6" class="mt-12">
+    <v-col cols="12" lg="6" class="mt-12">
       <LocationVue />
     </v-col>
     <v-col cols="12" lg="6" class="mt-12">
       <Contact />
     </v-col>
   </v-row>
+  <v-row>
+    <Footer/>
+  </v-row>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 
 import Carousel from "../components/landing/hero.vue";
 import Paralax from "../components/landing/Paralax.vue";
@@ -69,6 +72,7 @@ import CardInfo from "../components/landing/CardInfo.vue";
 import Brand from "../components/landing/Brand.vue";
 import LocationVue from "../components/landing/Location.vue";
 import Contact from "../components/landing/Contact.vue";
+import Footer from "../components/landing/Footer.vue";
 
 const items = ref([
   {

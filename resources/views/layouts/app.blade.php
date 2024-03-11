@@ -33,17 +33,42 @@
         </div>
     </div>
     <div id="app">
-        <v-container fluid class="white">
-            <v-row align="center" justify="center" class="overflow-hidden">
-                <v-col cols="12" md="7" lg="8" class="d-lg-flex align-right justify-start authentication position-relative bg-blueLight" width="100%">
-                    <!-- Ajusta el ancho de la imagen a un porcentaje menor -->
-                    <v-img src="/img/principal.png" height="100vh" width="50%" class="mx-auto d-flex"/>
+        <v-app style="background-color: #f6fbff">
+            <v-container fluid class="fill-height pa-0 ma-0 overflow-hidden">
+              <v-row
+                align="center"
+                justify="center"
+                style="height: 100%"
+                class="pa-0 ma-0"
+              >
+                <v-col cols="12" md="6">
+                 @yield('content')
                 </v-col>
-                <v-col cols="12" md="5" lg="4" class="pa-0">
-                    @yield('content')
+                <v-col
+                  cols="12"
+                  md="6"
+                  style="height: 100%; width: 100%"
+                  class="pr-0 pb-0 pt-0"
+                  elevation="3"
+                  v-if="mdAndDown!=true"
+                >
+                  <v-img
+                    src="/img/fo.png"
+                    alt="Imagen"
+                    cover
+                    height="100%"
+                    class="elevation-6"
+                  />
+                  <v-img 
+                    src="/img/footer.png"
+                    style="position: fixed;"
+                    height="100%"
+                    class="elevation-6"
+                  />
                 </v-col>
-            </v-row>
-        </v-container>
+              </v-row>
+            </v-container>
+          </v-app>
     </div>
     <script>
         window.addEventListener('load', function() {
