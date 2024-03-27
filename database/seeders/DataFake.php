@@ -84,10 +84,10 @@ class DataFake extends Seeder
         $business = Business::create([
             'name' => 'Fruteria',
             'fiscal_name' => 'NA',
-            'reason_social' => 'NA',
-            'email' => 'email@email.com',
+            // 'reason_social' => 'NA',
+            // 'email' => 'email@email.com',
             'fiscal_street' => "Nose",
-            'iva' => false,
+            // 'iva' => false,
             'bank_id' => $bank->id,
             'colony_id' => $colony->id,
         ]);

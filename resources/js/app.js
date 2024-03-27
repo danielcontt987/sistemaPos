@@ -30,12 +30,15 @@ import VueApexCharts from "vue3-apexcharts";
 // Flatpickr
 import flatpickr from 'flatpickr'
 import 'flatpickr/dist/flatpickr.css'
+import "vue3-carousel/dist/carousel.css";
+import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 
 const customLightTheme = {
   colors: {
     primary: '#5d87ff',
     blueSky: '#ecf2ff',
-    background: '#92969e',
+    // background: '#92969e',
+    backgroundColor: '#ecf2ff',
     white: '#FFFFFF',
     background_drawer: "#FFF",
     background_nav: "#ffffff",
@@ -44,6 +47,7 @@ const customLightTheme = {
     grey_dark: "#5b5867",
     greyLight: '#92969e',
     fail: '#F50057',
+    icon_color: '#F30D46',
     successLight: "#e2fbf6",
     greenLight: "#13deb9",
     lightprimary: "#ecf2ff",
@@ -140,6 +144,7 @@ const vuetify = createVuetify({
  */
 
 import App from './App.vue';
+import Alert from '../js/components/global/alert/AlertNormal.vue';
 
 const app = createApp({
   setup(){
@@ -153,6 +158,7 @@ const pinia = createPinia();
 app.use(pinia);
 
 app.component('App', App);
+app.component('Alert', Alert);
 app.use(router);
 app.use(vuetify,{
   lang: {
@@ -162,6 +168,10 @@ app.use(vuetify,{
 });
 app.use(VueApexCharts);
 app.use(flatpickr);
+app.component('Carousel', Carousel);
+app.component('Slide', Slide);
+app.component('Pagination', Pagination);
+app.component('Navigation', Navigation);
 
 
 app.config.globalProperties.$Feather = feather;

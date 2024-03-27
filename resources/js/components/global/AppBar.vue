@@ -93,7 +93,7 @@ provide("drawer", drawer);
                   </v-list-item>
                 </v-list>
               </v-menu>
-          <v-btn icon class="mr-3">
+          <v-btn icon class="mr-3" stacked>
             <v-badge color="fail" class="py-2">
               <v-icon
                 variant="text"

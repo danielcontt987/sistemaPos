@@ -17,7 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::get('/login', function () {
+    return view('welcome');
+});
+
+// Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/punto-de-venta', [App\Http\Controllers\HomeController::class, 'pointOfSale'])->name('welcome');
@@ -26,3 +30,8 @@ Route::get('/ajustes', [App\Http\Controllers\HomeController::class, 'ajustes'])-
 
 //User
 Route::get('/get-user', [App\Http\Controllers\UserController::class, 'getUser']);
+Route::post('user/login', [App\Http\Controllers\UserController::class, 'login']);
+
+Route::get('/img/{filename}', function ($filename) {
+    return response()->file(public_path('img/' . $filename));
+});
